@@ -27,6 +27,10 @@ class OrderPolicy < ApplicationPolicy
     @user.admin?
   end
 
+  def send?
+    @user.admin?
+  end
+
   private
 
   def order

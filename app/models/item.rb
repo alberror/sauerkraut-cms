@@ -21,7 +21,7 @@ class Item < ApplicationRecord
   has_many :purchases
   has_many :orders, through: :purchases
 
-  validates :title, :slug, :summary, :body, presence: true
+  validates :name, :summary, :body, presence: true
   validates :stock, presence: true, numericality: true
   validates :status, presence: true, inclusion: { in: STATUSES }
 end

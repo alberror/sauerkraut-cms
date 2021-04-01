@@ -6,9 +6,17 @@ Rails.application.routes.draw do
   # resources :projects
   namespace :admin do
     root to: "dashboard#admin"
-    resources :items
-    resources :orders
-    resources :posts
+    resources :items do
+      get "/publish", to: "items#publish"
+      get "/unpublish", to: "items#unpublish"
+    end
+    resources :orders do
+      # get "/send", to: "orders#send"
+    end
+    resources :posts do
+      get "/publish", to: "posts#publish"
+      get "/unpublish", to: "posts#unpublish"
+    end
     # resources :projects do
     #   get "/publish", to: "projects#publish"
     #   get "/unpublish", to: "projects#unpublish"

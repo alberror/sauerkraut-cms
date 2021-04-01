@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use devise for authentication
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
+# Faker for seeds
+gem 'faker', '~> 2.17'
+
 # Use pundit for authorization
 gem 'pundit', '~> 2.1'
 

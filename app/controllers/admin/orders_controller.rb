@@ -1,5 +1,6 @@
 class Admin::OrdersController < Admin::AdminController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order_for_status_change, only: %i[ send ]
   layout "admin"
 
   def index
@@ -46,9 +47,23 @@ class Admin::OrdersController < Admin::AdminController
     redirect_to admin_orders_path
   end
 
+  # def send
+  #   if @order.update(status: "sent")
+  #     flash[:notice] = "La commande est bien marquée comme expédiée."
+  #     redirect_back(fallback_location: admin_orders_path)
+  #   else
+  #     flash[:error] = "Erreur dans le changement de statut de la commande."
+  #   end
+  # end
+
   private
     def set_order
       @order = Order.find(params[:id])
+      authorize @order
+    end
+
+    def set_order_for_status_change
+      @order = Order.find(params[:order_id])
       authorize @order
     end
 

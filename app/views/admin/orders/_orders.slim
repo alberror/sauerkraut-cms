@@ -1,16 +1,16 @@
 - @orders.each do |order|
   tr
     td = order.user.full_name
-    td = created_at
+    td = l(order.created_at, format: "%d %B %Y")
     td = t("statuses.#{order.status}")
     td TODO
     td
       .resource-actions
-        .action-container class="status-#{order.status}" data-controller="toggle" data-toggle-class="hidden"
-          - if order.status == "paid"
-            = link_to admin_order_send_path(order) do
-              i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
-              .tooltip.hidden data-toggle-target="content" = t("actions.send")          
+        /  - if order.status == "paid"
+        /   .action-container class="status-#{order.status}" data-controller="toggle" data-toggle-class="hidden"
+        /     = link_to admin_order_send_path(order) do
+        /       i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+        /       .tooltip.hidden data-toggle-target="content" = t("actions.send")          
         .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
           = link_to admin_order_path(order) do
             i.main-action.far.fa-eye data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"

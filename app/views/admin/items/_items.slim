@@ -25,6 +25,6 @@
             .tooltip.hidden data-toggle-target="content" = t("actions.edit")
         - if item.status == "unpublished"
           .action-container.delete-action data-controller="toggle" data-toggle-class="hidden"
-            = link_to admin_item_path(item), method: :delete, data: {confirm: "Vous allez supprimer #{item.client}. Êtes-vous sûr(e) ?"} do
+            = link_to admin_item_path(item), method: :delete, data: {confirm: "Vous allez supprimer #{item.name}. Êtes-vous sûr(e) ?"} do
               i.main-action.delete.fas.fa-skull data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
               .tooltip.hidden data-toggle-target="content" = t("actions.delete")

@@ -8,10 +8,6 @@ table.resource-table {
   th, td {
     text-align: left;
     vertical-align: middle;
-
-    &:first-child:not(.left-align) {
-      text-align: center;
-    }
   }
 
   thead tr {

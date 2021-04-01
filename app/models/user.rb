@@ -24,10 +24,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  STATUSES = ["active", "inactive"]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  STATUSES = ["active", "inactive"]
+  
   has_many :posts
   has_many :orders
   has_many :purchases, through: :orders
