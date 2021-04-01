@@ -8,12 +8,11 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.present? && user.admin?
   end
 
   def update?
-    return true if user.present? && user.admin?
-    user.present? && user == post.user
+    user.present? && user.admin?
   end
 
   def destroy?

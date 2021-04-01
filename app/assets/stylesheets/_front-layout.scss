@@ -1,0 +1,28 @@
+@import "variables";
+
+.front-page {
+  section {
+    height: 100vh;
+
+    &.header {
+      h1 {
+        color: $brandPrimary;
+        font-size: $xl4;
+        font-weight: $thin;
+        margin: $xl3 auto;
+        text-transform: uppercase;
+      }
+  
+      p {
+        font-size: $xl;
+        font-weight: $light;
+      
+        &.scroll {
+          font-style: italic;
+          font-weight: $thin;
+          margin-top: $xl;
+        }
+      }
+    }
+  }
+}

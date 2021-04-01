@@ -1,0 +1,47 @@
+fr:
+  actions:
+    cancel: Annuler
+    save: Enregistrer
+  admin_sidebar:
+    dashboard: Dashboard
+    posts: Articles
+    projects: Projets
+    settings: Préférences
+    view_site: Site
+    sign_out: Quitter
+  default:
+    building: site en construction.
+    company_initials: HM
+    company_name: Hello Mother
+    scroll_anyway: (vous pouvez quand même scroller pour voir nos derniers projets)
+  labels:
+    body: Contenu
+    client: Client
+    partner: Partenaire
+    summary: Résumé
+    thumbnail: Vignette
+    title: Titre
+  statuses:
+    published: Publié
+    unconfirmed: Non confirmé
+    unpublished: Dépublié
+  page_titles:
+    edit: Éditer
+    new: Créer
+    one_post: un article
+    one_project: un projet
+    projects_index: Projets
+  placeholders:
+    search: Chercher
+  resource_titles:
+    actions: Actions
+    status: Statut
+    title: Titre
+    views: Vues
+  sort:
+    alpha_asc: A → Z
+    alpha_desc: Z → A
+    signup_asc: Inscription +
+    signup_desc: Inscription -
+    start_date_asc: Date +
+    start_date_desc: Date -

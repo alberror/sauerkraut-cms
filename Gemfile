@@ -34,7 +34,18 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 # Use pundit for authorization
 gem 'pundit', '~> 2.1'
 
+# Use friendly id for blog slugs
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+
+# Use simple form for forms
+gem 'simple_form', '~> 5.1'
+
+# Use slim rails for templates
+gem 'slim-rails', '~> 3.2'
+
 group :development, :test do
+  # Annotate gives you a documentation of the schema on each Model class
+  gem 'annotate', '~> 3.1', '>= 3.1.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

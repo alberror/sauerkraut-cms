@@ -1,0 +1,16 @@
+.front-page
+  section.header
+    h1 = t("default.company_name")
+    p = t("default.building")
+    p.scroll = t("default.scroll_anyway")
+
+  section.projects
+    h2 Nos derniers projets 
+    ul
+      - @projects.each do |project|
+        li.resource-card
+          .card-content
+            h3 = project.client 
+            - if project.partner.present?
+              p = "#{t("default.company_name")} x #{project.partner}" 
+          = image_tag(project.thumbnail)

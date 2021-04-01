@@ -1,0 +1,49 @@
+.admin-page
+  section.header
+    h1
+      span.title = t("page_titles.posts_index")
+      span.subtitle = "#{@posts.count} projet#{"s" if @posts.count > 1} trouvé#{"s" if @posts.count > 1}"
+    .actions
+      .action
+        = link_to new_admin_post_path do
+          i.fas.fa-plus
+  section.actions-bar.filters-bar
+    .search
+      = form_tag admin_posts_path, method: :get do
+        = text_field_tag 'search', params[:search], placeholder: t("placeholders.search")
+        = button_tag(type: "submit") do
+          i.fas.fa-search
+    .filter class="#{"filters-with-params" if params[:status].present?}"
+      - if params[:status].present? || params[:user].present?
+        = link_to admin_posts_path, class: "close-btn" do
+          i.fas.fa-times
+      .icon
+        i.fas.fa-filter
+      = link_to t("statuses.unconfirmed"), admin_posts_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "unconfirmed" ? "unconfirmed" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "unconfirmed"}"
+      = link_to t("statuses.published"), admin_posts_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "published" ? "published" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "published"}"
+      = link_to t("statuses.unpublished"), admin_posts_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "unpublished" ? "unpublished" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "unpublished"}"
+  section.resource
+    table.resource-table
+      thead
+        tr 
+          th
+            i.fas.fa-image
+          th
+            span = t("resource_titles.client")
+            span.sort
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "client_asc"), class: "btn #{"selected-btn" if params[:order] == 'client_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "client_desc"), class: "btn #{"selected-btn" if params[:order] == 'client_desc'}" do
+                i.fas.fa-sort-down
+          th
+            span = t("resource_titles.status")
+            span.sort
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "status_asc"), class: "btn #{"selected-btn" if params[:order] == 'status_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "status_desc"), class: "btn #{"selected-btn" if params[:order] == 'status_desc'}" do
+                i.fas.fa-sort-down
+          th = t("resource_titles.views") 
+          th = t("resource_titles.actions")
+      tbody
+        = render "posts"
+

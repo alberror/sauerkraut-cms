@@ -1,0 +1,59 @@
+@import "variables";
+
+body {
+  scroll-behavior: smooth;
+}
+
+
+h2 {
+  color: $brandPrimary;
+  font-size: $xl2;
+  font-weight: $light;
+  line-height: $xl3;
+  text-transform: uppercase;
+}
+
+section.projects {
+  ul {
+    display: grid;
+    grid-gap: $lg;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+
+    &.resource-card {
+      .card-content {
+        bottom: 0;
+        color: $white;
+        left: 0;
+        position: absolute;
+
+        &>* {
+          padding: $xs $sm;
+        }
+
+        h3 {
+          background-color: $gradient1;
+        }
+
+        p {
+          background-color: $brandPrimary;
+        }
+      }
+
+      img {
+        height: $h-md;
+        object-fit: cover;
+        width: $w-md;
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+@import "./variables";
+
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-page {
+  width: 100%;
+
+  section {
+    padding: $md;
+
+    &.header {
+      align-items: center;
+      background-color: $gradient1;
+      display: flex;
+      font-size: $xl;
+      justify-content: space-between;
+      padding: $xl;
+      
+      h1 {
+        align-items: center;
+        display: flex;
+        font-size: $xl;
+        margin: 0;
+
+        .title {
+          border: $sm solid $white;
+          border-right: none;
+          color: $white;
+          padding: $md;
+          text-transform: uppercase;
+        }
+
+        .subtitle {
+          align-items: center;
+          background-color: $white;
+          border: $sm solid $white;
+          color: $gradient1;
+          display: flex;
+          font-size: $xl;
+          font-weight: $thin;
+          padding: $md;
+        }
+      }
+
+      .actions {
+        display: flex;
+
+        .action {
+          align-items: center;
+          background-color: $brandPrimary;
+          border-radius: $rounded;
+          color: $white;
+          cursor: pointer;
+          display: flex;
+          height: $xl3;
+          justify-content: center;
+          width: $xl3;
+
+          &:hover {
+            transform: scale(0.9);
+          }
+
+          a {
+            color: white;
+          }
+        }
+
+        &>:not(:first-child) {
+          margin-left: $lg;
+        }
+      }
+    }
+
+    &.actions-bar {
+      align-items: center;
+      display: flex;
+      
+      &.filters-bar {
+        justify-content: space-between;
+      }
+
+      &>:not(:first-child) {
+        margin-left: $lg;
+      }
+
+      .search {}
+
+      .filter {
+        display: flex;
+
+        &>:not(:first-child) {
+          margin-left: $lg;
+        }
+      }
+
+      .action-card, .action-card a {
+        &>:not(:first-child) {
+          margin-left: $sm;
+        }
+      }
+    }
+  }
+}

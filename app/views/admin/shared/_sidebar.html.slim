@@ -1,0 +1,35 @@
+.sidebar data-controller="toggle" data-toggle-class="hidden"
+  .trigger data-action="click->toggle#toggle" data-toggle-target="content"
+    i.fas.fa-chevron-right  
+  .trigger.hidden data-action="click->toggle#toggle" data-toggle-target="content"
+    i.fas.fa-chevron-left
+  ul
+    li 
+      span.company-initials data-toggle-target="content" = t("default.company_initials")
+      span.company-name.hidden data-toggle-target="content" = t("default.company_name")
+    li
+      = link_to admin_root_path 
+        i.fas.fa-home
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.dashboard")
+    li
+      = link_to admin_projects_path 
+        i.fas.fa-project-diagram
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.projects")
+    li
+      = link_to admin_posts_path
+        i.fas.fa-newspaper
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.posts")
+  ul
+    li
+      = link_to root_path, target: "_blank" do
+        i.fas.fa-external-link-alt
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.view_site")      
+    li
+      = link_to edit_user_registration_path
+        i.fas.fa-cog
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.settings")
+    li 
+      = link_to destroy_user_session_path, method: :delete do
+        i.fas.fa-power-off
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.sign_out")
+      

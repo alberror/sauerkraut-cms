@@ -1,0 +1,30 @@
+- @posts.each do |post|
+  tr
+    td = image_tag(post.thumbnail) if post.thumbnail.present?
+    td = post.client
+    td = t("statuses.#{post.status}")
+    td TODO
+    td
+      .resource-actions
+        .action-container class="status-#{post.status}" data-controller="toggle" data-toggle-class="hidden"
+          - if post.status == "published"
+            = link_to admin_post_unpublish_path(post) do
+              i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.unpublish")          
+          - else
+            = link_to admin_post_publish_path(post) do
+              i.fas.fa-toggle-off data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.publish")
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to admin_post_path(post) do
+            i.main-action.far.fa-eye data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.show")
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to edit_admin_post_path(post) do
+            i.main-action.fas.fa-edit data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.edit")
+        - if post.status == "unpublished"
+          .action-container.delete-action data-controller="toggle" data-toggle-class="hidden"
+            = link_to admin_post_path(post), method: :delete, data: {confirm: "Vous allez supprimer #{post.client}. Êtes-vous sûr(e) ?"} do
+              i.main-action.delete.fas.fa-skull data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.delete")

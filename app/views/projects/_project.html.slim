@@ -1,0 +1,6 @@
+section.resource-show
+  = @project.client
+  = @project.partner
+  = image_tag(@project.thumbnail)
+  = t("statuses.#{@project.status}")
+  = @project.summary 

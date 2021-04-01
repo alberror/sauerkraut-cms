@@ -1,0 +1,118 @@
+@import "../variables";
+
+table.resource-table {
+  // Table Constructor
+  border-collapse: collapse;
+  width: 100%;
+
+  th, td {
+    text-align: left;
+    vertical-align: middle;
+
+    &:first-child:not(.left-align) {
+      text-align: center;
+    }
+  }
+
+  thead tr {
+    background-color: $brandPrimary;
+    color: $white;
+
+    th {
+      padding: $lg $md;
+
+      .sort {
+        margin-left: $md;
+      }
+
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  tbody tr {
+    &:nth-child(2n + 2) {
+      background-color: $grey1;
+    }
+
+    td {
+      padding: $md;
+    }
+  }
+
+  // HTML Elements
+  img {
+    border-radius: 50%;
+    height: 2.5rem;
+    object-fit: cover;
+    width: 2.5rem;
+  }
+
+  // Class-based Rules
+  .resource-actions {
+    display: flex;
+
+    &>:not(:first-child) {
+      margin-left: $sm;
+    }
+
+    .action-container {
+      align-items: center;
+      border-radius: .3rem;
+      box-sizing: border-box;
+      display: flex;
+      height: $xl2;
+      justify-content: center;
+      position: relative;
+      text-transform: uppercase;
+      width: $xl2;
+
+      &.main-action {
+        background-color: #bdc3c7;
+      }
+
+      &.delete-action {
+        background-color: $red;
+      }
+
+      &.status-unconfirmed {
+        background-color: $orange;
+      }
+
+      &.status-published {
+        background-color: $green;
+      }
+      
+      &.status-unpublished {
+        background-color: $red;
+      }
+
+      a {
+        cursor: default;
+      }
+
+      i {
+        color: $gradient1;
+        font-size: rem(18px);
+      }
+
+      .tooltip {
+        align-items: center;
+        background-color: $gradient2;
+        border-radius: $xs;
+        color: white;
+        display: flex;
+        font-size: rem(14px);
+        font-weight: 100;
+        height: $xl2;
+        justify-content: center;
+        position: absolute;
+        right: 100%;
+        text-transform: capitalize;
+        top: 0;
+        width: $xl4;
+      }
+    }
+  }
+}

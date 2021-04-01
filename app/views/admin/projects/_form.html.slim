@@ -1,0 +1,7 @@
+section.form
+  = simple_form_for [:admin, @project] do |f|
+    = f.input :client, label: t("labels.client")
+    = f.input :partner, label: t("labels.partner")
+    = f.input :summary, as: :text, label: t("labels.summary")
+    = f.input :thumbnail, as: :file, label: t("labels.thumbnail")
+    = f.submit t("actions.save"), data: { target: "forms.submitButton" }
