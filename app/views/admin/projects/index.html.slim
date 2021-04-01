@@ -2,7 +2,7 @@
   section.header
     h1
       span.title = t("page_titles.projects_index")
-      span.subtitle = "#{@projects.count} projet#{"s" if @projects.count > 1} trouvé#{"s" if @projects.count > 1}"
+      span.subtitle = t("page_subtitles.projects", count: @projects.count)
     .actions
       .action
         = link_to new_admin_project_path do

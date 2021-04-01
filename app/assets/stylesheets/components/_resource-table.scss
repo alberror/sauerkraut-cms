@@ -76,15 +76,20 @@ table.resource-table {
         background-color: $red;
       }
 
-      &.status-unconfirmed {
+      &.status-unconfirmed,
+      &.status-paid {
         background-color: $orange;
       }
 
-      &.status-published {
+      &.status-published,
+      &.status-active,
+      &.status-sent {
         background-color: $green;
       }
       
-      &.status-unpublished {
+      &.status-unpublished,
+      &.status-inactive,
+      &.status-pending {
         background-color: $red;
       }
 

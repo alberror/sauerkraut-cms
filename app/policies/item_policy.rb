@@ -1,4 +1,4 @@
-class ProjectPolicy < ApplicationPolicy
+class ItemPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -29,7 +29,7 @@ class ProjectPolicy < ApplicationPolicy
 
   private
 
-  def project
+  def item
     record
   end
 end

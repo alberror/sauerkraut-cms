@@ -5,7 +5,7 @@ class Admin::AdminController < ApplicationController
 
   def require_admin
     unless current_user && current_user.admin?
-      redirect_to root_path, notice: "Vous n'avez pas les autorisations requises pour cette destination"
+      redirect_to root_path, notice: t("errors.unauthorized_location")
     end
   end
 end

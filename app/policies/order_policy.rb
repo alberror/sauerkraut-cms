@@ -1,14 +1,14 @@
-class ProjectPolicy < ApplicationPolicy
+class OrderPolicy < ApplicationPolicy
   def index?
-    true
+    @user.admin? || @order.user == @user
   end
 
   def show?
-    true
+    @user.admin? || @order.user == @user
   end
 
   def create?
-    @user.admin?
+    @user.user?
   end
 
   def new?
@@ -29,7 +29,7 @@ class ProjectPolicy < ApplicationPolicy
 
   private
 
-  def project
+  def order
     record
   end
 end

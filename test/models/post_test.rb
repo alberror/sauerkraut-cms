@@ -10,6 +10,7 @@
 #  updated_at :datetime         not null
 #  summary    :string
 #  slug       :string
+#  status     :string           default("unconfirmed")
 #
 require "test_helper"
 

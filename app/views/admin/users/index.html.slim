@@ -1,0 +1,50 @@
+.admin-page
+  section.header
+    h1
+      span.title = t("page_titles.users_index")
+      span.subtitle = t("page_subtitles.users", count: @users.count)
+  section.actions-bar.filters-bar
+    .search
+      = form_tag admin_users_path, method: :get do
+        = text_field_tag 'search', params[:search], placeholder: t("placeholders.search")
+        = button_tag(type: "submit") do
+          i.fas.fa-search
+    .filter class="#{"filters-with-params" if params[:status].present?}"
+      - if params[:status].present? || params[:user].present?
+        = link_to admin_users_path, class: "close-btn" do
+          i.fas.fa-times
+      .icon
+        i.fas.fa-filter
+      = link_to t("statuses.pending"), admin_users_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "pending" ? "pending" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "pending"}"
+      = link_to t("statuses.paid"), admin_users_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "paid" ? "paid" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "paid"}"
+      = link_to t("statuses.sent"), admin_users_path(order: params[:order], search: params[:search], status: !params[:status].present? || params[:status] != "sent" ? "sent" : nil, user: params[:user]), class: "btn #{"selected-btn" if params[:status] == "sent"}"
+  section.resource
+    table.resource-table
+      thead
+        tr 
+          th
+            = t("resource_titles.name")
+            span.sort
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "user_name_asc"), class: "btn #{"selected-btn" if params[:order] == 'user_name_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "user_name_desc"), class: "btn #{"selected-btn" if params[:order] == 'user_name_desc'}" do
+                i.fas.fa-sort-down
+          th
+            span = t("resource_titles.created_at")
+            span.sort
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "created_at_asc"), class: "btn #{"selected-btn" if params[:order] == 'created_at_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "created_at_desc"), class: "btn #{"selected-btn" if params[:order] == 'created_at_desc'}" do
+                i.fas.fa-sort-down
+          th
+            span = t("resource_titles.status")
+            span.sort
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "status_asc"), class: "btn #{"selected-btn" if params[:order] == 'status_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_users_path(search: params[:search], status: params[:status], order: "status_desc"), class: "btn #{"selected-btn" if params[:order] == 'status_desc'}" do
+                i.fas.fa-sort-down
+          th = t("resource_titles.role") 
+          th = t("resource_titles.actions")
+      tbody
+        = render "users"
+

@@ -1,11 +1,18 @@
 fr:
   actions:
+    activate: Activer
     cancel: Annuler
+    delete: Supprimer
+    edit: Éditer
+    deactivate: Désactiver
     save: Enregistrer
+    show: Voir
   admin_sidebar:
     dashboard: Dashboard
+    items: Catalogue
     posts: Articles
     projects: Projets
+    orders: Commandes
     settings: Préférences
     view_site: Site
     sign_out: Quitter
@@ -14,30 +21,78 @@ fr:
     company_initials: HM
     company_name: Hello Mother
     scroll_anyway: (vous pouvez quand même scroller pour voir nos derniers projets)
+  errors:
+    unauthorized_location: Vous n'avez pas les autorisations requises pour cette destination
+  helpers:
+    found: trouvé
   labels:
     body: Contenu
     client: Client
     partner: Partenaire
+    stock: Stock
     summary: Résumé
     thumbnail: Vignette
     title: Titre
-  statuses:
-    published: Publié
-    unconfirmed: Non confirmé
-    unpublished: Dépublié
+  page_subtitles:
+    items:
+      one: "%{count} objet trouvé"
+      other: "%{count} objets trouvés"
+      zero: "%{count} objet trouvé"
+    orders:
+      one: "%{count} commande trouvée"
+      other: "%{count} commandes trouvées"
+      zero: "%{count} commande trouvée"
+    posts:
+      one: "%{count} article trouvé"
+      other: "%{count} articles trouvés"
+      zero: "%{count} article trouvé"
+    projects:
+      one: "%{count} projet trouvé"
+      other: "%{count} projets trouvés"
+      zero: "%{count} projet trouvé"
+    users:
+      one: "%{count} utilisateur trouvé"
+      other: "%{count} utilisateurs trouvés"
+      zero: "%{count} utilisateur trouvé"
   page_titles:
     edit: Éditer
+    items_index: Catalogue
     new: Créer
+    one_item: un objet
     one_post: un article
     one_project: un projet
+    orders_index: Commandes
+    posts_index: Articles
     projects_index: Projets
+    users_index: Utilisateurs
   placeholders:
     search: Chercher
+    resource_names:
+    item: objet
+    post: article
+    project: projet
   resource_titles:
     actions: Actions
+    amount: Montant
+    created_at: Date de création
+    name: Nom
+    role: Rôle
     status: Statut
     title: Titre
+    user_name: Acheteur
     views: Vues
+  roles:
+    admin: Administrateur
+    user: Utilisateur
+  statuses:
+    active: Actif
+    inactive: Inactif
+    paid: Payé
+    pending: En attente
+    published: Publié
+    sent: Expédié
+    unconfirmed: Non confirmé
+    unpublished: Dépublié
   sort:
     alpha_asc: A → Z
     alpha_desc: Z → A

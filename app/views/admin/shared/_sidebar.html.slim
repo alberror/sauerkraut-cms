@@ -11,14 +11,26 @@
       = link_to admin_root_path 
         i.fas.fa-home
         span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.dashboard")
-    li
-      = link_to admin_projects_path 
-        i.fas.fa-project-diagram
-        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.projects")
+    / li
+    /   = link_to admin_projects_path 
+    /     i.fas.fa-project-diagram
+    /     span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.projects")
     li
       = link_to admin_posts_path
         i.fas.fa-newspaper
         span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.posts")
+    li
+      = link_to admin_items_path
+        i.fas.fa-store
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.items")
+    li
+      = link_to admin_orders_path
+        i.fas.fa-shopping-basket
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.orders")
+    li
+      = link_to admin_users_path
+        i.fas.fa-user
+        span.resource-name.hidden data-toggle-target="content" = t("admin_sidebar.users")
   ul
     li
       = link_to root_path, target: "_blank" do

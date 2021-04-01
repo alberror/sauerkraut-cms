@@ -7,7 +7,6 @@
 #  updated_at :datetime         not null
 #  client     :string
 #  partner    :string
-#  thumbnail  :string
 #  summary    :string
 #  status     :string           default("unconfirmed")
 #

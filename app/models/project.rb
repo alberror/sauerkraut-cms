@@ -15,6 +15,6 @@ class Project < ApplicationRecord
 
   has_one_attached :thumbnail
 
-  validates :client, presence: true
+  validates :client, :slug, :summary, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
 end

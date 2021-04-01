@@ -1,0 +1,14 @@
+.admin-page data-controller="forms"
+  section.header
+    h1
+      span.title = t("page_titles.edit")
+      span.subtitle = @order.user.full_name
+  section.actions-bar
+    .action-card
+      = link_to admin_orders_path do
+        i.fas.fa-chevron-left
+        span = t("actions.cancel")
+    .action-card.color-red data-action="click->forms#submitForm"
+      i.fas.fa-save
+      span = t("actions.save")
+  = render "form"

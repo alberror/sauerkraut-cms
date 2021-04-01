@@ -11,6 +11,15 @@
 #  role                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
+#  phone                  :string
+#  status                 :string
+#  address                :string
+#  address_details        :string
+#  zipcode                :string
+#  city                   :string
+#  country                :string
 #
 require "test_helper"
 

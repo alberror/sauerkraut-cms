@@ -2,7 +2,7 @@
   section.header
     h1
       span.title = t("page_titles.posts_index")
-      span.subtitle = "#{@posts.count} projet#{"s" if @posts.count > 1} trouvé#{"s" if @posts.count > 1}"
+      span.subtitle = t("page_subtitles.posts", count: @posts.count)
     .actions
       .action
         = link_to new_admin_post_path do

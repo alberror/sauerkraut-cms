@@ -1,24 +1,21 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: items
 #
 #  id         :bigint           not null, primary key
-#  user_id    :integer
-#  title      :string
+#  name       :string
+#  slug       :string
+#  stock      :integer
+#  summary    :string
 #  body       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  summary    :string
-#  slug       :string
 #  status     :string           default("unconfirmed")
 #
+require "test_helper"
 
-one:
-  user_id: 1
-  title: MyString
-  body: MyText
-
-two:
-  user_id: 1
-  title: MyString
-  body: MyText
+class ItemTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

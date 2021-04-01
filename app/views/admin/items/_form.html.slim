@@ -1,0 +1,9 @@
+section.form
+  = simple_form_for [:admin, @item] do |f|
+    = f.input :name, label: t("labels.title")
+    = f.input :slug, label: t("labels.slug")
+    = f.input :stock, label: t("labels.stock")
+    = f.input :summary, as: :text, label: t("labels.summary")
+    = f.input :thumbnail, as: :file, label: t("labels.thumbnail")
+    = f.input :body, as: :rich_text_area, label: t("labels.body")
+    = f.submit t("actions.save"), data: { target: "forms.submitButton" }

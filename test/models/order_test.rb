@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: projects
+# Table name: orders
 #
 #  id         :bigint           not null, primary key
+#  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  client     :string
-#  partner    :string
-#  summary    :string
-#  status     :string           default("unconfirmed")
+#  status     :string           default("pending")
 #
 require "test_helper"
 
-class ProjectTest < ActiveSupport::TestCase
+class OrderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

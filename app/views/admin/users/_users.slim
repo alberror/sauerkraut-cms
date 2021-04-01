@@ -1,0 +1,25 @@
+- @users.each do |user|
+  tr
+    td = user.full_name
+    td = l(user.created_at, format: "%d %B %Y")
+    td = t("statuses.#{user.status}")
+    td = t("roles.#{user.role}")
+    td
+      .resource-actions
+        .action-container class="status-#{user.status}" data-controller="toggle" data-toggle-class="hidden"
+          - if user.status == "active"
+            = link_to admin_user_deactivate_path(user) do
+              i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.deactivate")          
+          - else
+            = link_to admin_user_activate_path(user) do
+              i.fas.fa-toggle-off data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.activate")          
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to admin_user_path(user) do
+            i.main-action.far.fa-eye data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.show")
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to edit_admin_user_path(user) do
+            i.main-action.fas.fa-edit data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.edit")

@@ -34,6 +34,14 @@ class ApplicationPolicy
     false
   end
 
+  def app?
+    @user.user? || @user.admin?
+  end
+
+  def admin?
+    @user.admin?
+  end
+
   class Scope
     attr_reader :user, :scope
 

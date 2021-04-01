@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: purchases
+#
+#  id         :bigint           not null, primary key
+#  stock      :integer
+#  item_id    :bigint           not null
+#  order_id   :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  stock: 1
+  item: one
+  order: one
+
+two:
+  stock: 1
+  item: two
+  order: two

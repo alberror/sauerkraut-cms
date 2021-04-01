@@ -5,7 +5,7 @@ class App::AppController < ApplicationController
 
   def require_signed_in
     unless current_user && current_user.user?
-      redirect_to root_path, notice: "Vous n'avez pas les autorisations requises pour cette destination"
+      redirect_to root_path, notice: t("errors.unauthorized_location")
     end
   end
 end
