@@ -1,14 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_action :require_admin
 
-  def policy_scope(scope)
-    super([:admin, scope])
-  end
-
-  def authorize(record, query = nil)
-    super([:admin, record], query)
-  end
-
   private
 
   def require_admin
