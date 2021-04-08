@@ -1,9 +1,14 @@
 class Admin::PostsController < Admin::AdminController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post_for_status_change, only: %i[ publish unpublish ]
   layout "admin"
   
   def index
-    @posts = Post.all
+    where = {}
+    where[:status] = params[:status] if params[:status].present?
+    order = params[:order].present? ? [params[:order].split("_")[0].to_sym, params[:order].split("_")[1].to_sym] : [:created_at, :asc]
+
+    @posts = Post.where(where).order(order[0] => order[1])
     authorize @posts
   end
 
@@ -20,6 +25,7 @@ class Admin::PostsController < Admin::AdminController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     authorize @post
     
     if @post.save
@@ -64,7 +70,12 @@ class Admin::PostsController < Admin::AdminController
 
   private
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
+      authorize @post
+    end
+
+    def set_post_for_status_change
+      @post = Post.friendly.find(params[:post_id])
       authorize @post
     end
 

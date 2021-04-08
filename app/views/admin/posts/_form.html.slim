@@ -1,7 +1,7 @@
-section.form
+section.form data-controller="slug"
   = simple_form_for [:admin, @post] do |f|
-    = f.input :title, label: t("labels.title")
-    = f.input :slug, label: t("labels.slug")
+    = f.input :title, label: t("labels.title"), input_html: { data: { action: "keyup->slug#fillSlug" } }
+    = f.input :slug, label: t("labels.slug"), input_html: { "data-slug-target": "slug" }
     = f.input :summary, as: :text, label: t("labels.summary")
     = f.input :thumbnail, as: :file, label: t("labels.thumbnail")
     = f.input :body, as: :rich_text_area, label: t("labels.body")

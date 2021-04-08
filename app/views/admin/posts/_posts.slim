@@ -1,7 +1,7 @@
 - @posts.each do |post|
   tr
     td = image_tag(post.thumbnail) if post.thumbnail.present?
-    td = post.client
+    td = post.title
     td = t("statuses.#{post.status}")
     td TODO
     td
@@ -25,6 +25,6 @@
             .tooltip.hidden data-toggle-target="content" = t("actions.edit")
         - if post.status == "unpublished"
           .action-container.delete-action data-controller="toggle" data-toggle-class="hidden"
-            = link_to admin_post_path(post), method: :delete, data: {confirm: "Vous allez supprimer #{post.client}. Êtes-vous sûr(e) ?"} do
+            = link_to admin_post_path(post), method: :delete, data: {confirm: "Vous allez supprimer #{post.title}. Êtes-vous sûr(e) ?"} do
               i.main-action.delete.fas.fa-skull data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
               .tooltip.hidden data-toggle-target="content" = t("actions.delete")

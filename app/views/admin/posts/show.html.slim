@@ -2,13 +2,14 @@
   section.header
     h1
       span.title = t("page_titles.new")
-      span.subtitle = t("page_titles.one_project")
+      span.subtitle = t("page_titles.one_post")
   section.actions-bar
     .action-card
-      = link_to admin_projects_path do
+      = link_to admin_posts_path do
         i.fas.fa-chevron-left
         span = t("actions.cancel")
-    .action-card.color-red data-action="click->forms#submitForm"
-      i.fas.fa-save
-      span = t("actions.save")
-  = render "projects/project"
+    .action-card 
+      = link_to edit_admin_post_path(@post) do
+        i.fas.fa-edit
+        span = t("actions.edit")
+  = render "posts/post"

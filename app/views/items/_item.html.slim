@@ -1,0 +1,6 @@
+section.resource-show
+  = @item.name
+  = image_tag(@item.thumbnail)
+  = t("statuses.#{@item.status}")
+  = @item.summary 
+  = @item.body

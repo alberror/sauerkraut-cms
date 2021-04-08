@@ -6,6 +6,7 @@ fr:
     edit: Éditer
     deactivate: Désactiver
     save: Enregistrer
+    send: Expédiée
     show: Voir
   admin_sidebar:
     dashboard: Dashboard
@@ -71,6 +72,8 @@ fr:
     item: objet
     post: article
     project: projet
+  resource_names:
+    order: commande
   resource_titles:
     actions: Actions
     amount: Montant

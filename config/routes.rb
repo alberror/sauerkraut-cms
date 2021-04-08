@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get "/unpublish", to: "items#unpublish"
     end
     resources :orders do
-      # get "/send", to: "orders#send"
+      get "/mark-as-sent", to: "orders#mark_as_sent"
     end
     resources :posts do
       get "/publish", to: "posts#publish"

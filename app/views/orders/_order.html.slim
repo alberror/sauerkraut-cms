@@ -1,0 +1,7 @@
+section.resource-show
+  = @order.user.full_name
+  - @order.items.each do |item|
+    = item.name
+    = image_tag(item.thumbnail)
+    = t("statuses.#{item.status}")
+    = item.summary 

@@ -1,0 +1,7 @@
+section.resource-show
+  = @post.title
+  = @post.user.full_name
+  = image_tag(@post.thumbnail)
+  = t("statuses.#{@post.status}")
+  = @post.summary 
+  = @post.body

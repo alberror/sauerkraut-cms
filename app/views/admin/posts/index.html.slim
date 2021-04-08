@@ -29,11 +29,11 @@
           th
             i.fas.fa-image
           th
-            span = t("resource_titles.client")
+            span = t("resource_titles.title")
             span.sort
-              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "client_asc"), class: "btn #{"selected-btn" if params[:order] == 'client_asc'}" do
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "title_asc"), class: "btn #{"selected-btn" if params[:order] == 'title_asc'}" do
                 i.fas.fa-sort-up
-              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "client_desc"), class: "btn #{"selected-btn" if params[:order] == 'client_desc'}" do
+              = link_to admin_posts_path(search: params[:search], status: params[:status], order: "title_desc"), class: "btn #{"selected-btn" if params[:order] == 'title_desc'}" do
                 i.fas.fa-sort-down
           th
             span = t("resource_titles.status")

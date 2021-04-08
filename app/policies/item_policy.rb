@@ -8,7 +8,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    @user.admin?
+    asked_by_admin?
   end
 
   def new?
@@ -16,7 +16,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def update?
-    @user.admin?
+    asked_by_admin?
   end
 
   def edit?
@@ -24,12 +24,24 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.admin?
+    asked_by_admin?
+  end
+
+  def publish?
+    asked_by_admin?
+  end
+
+  def unpublish?
+    asked_by_admin?
   end
 
   private
 
   def item
     record
+  end
+
+  def asked_by_admin?
+    user.present? && user.admin?
   end
 end

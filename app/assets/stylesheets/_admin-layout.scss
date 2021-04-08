@@ -94,6 +94,10 @@
         &>:not(:first-child) {
           margin-left: $lg;
         }
+
+        .selected-btn {
+          color: $brandPrimary;
+        }
       }
 
       .action-card, .action-card a {

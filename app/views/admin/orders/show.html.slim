@@ -1,8 +1,8 @@
 .admin-page data-controller="forms"
   section.header
     h1
-      span.title = t("page_titles.new")
-      span.subtitle = t("page_titles.one_order")
+      span.title = t("page_titles.order")
+      span.subtitle = "#{t("resource_names.order").capitalize} ##{@order.id}"
   section.actions-bar
     .action-card
       = link_to admin_orders_path do
