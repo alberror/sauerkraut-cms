@@ -1,1 +1,11 @@
-p Header
+header
+  .logo
+    = image_tag("logos/logo-img.png", class: "header-logo-img")
+    = image_tag("logos/logo-txt.png", class: "header-logo-txt")
+
+  nav
+    ul
+      li = link_to t("nav.home"), root_path
+      li = link_to t("nav.members"), members_path
+      li = link_to t("nav.blog"), posts_path
+      li = link_to t("nav.contact"), contact_path

@@ -14,7 +14,7 @@
 #  first_name             :string
 #  last_name              :string
 #  phone                  :string
-#  status                 :string
+#  status                 :string           default("active")
 #  address                :string
 #  address_details        :string
 #  zipcode                :string
@@ -23,18 +23,19 @@
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable :registerable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   STATUSES = ["active", "inactive"]
-  
+
   has_many :posts
   has_many :orders
   has_many :purchases, through: :orders
 
   validates :first_name, :last_name, :email, :role, :status, presence: true
   validates :status, inclusion: { in: STATUSES }
+
+  scope :active, -> { where(status: "active") }
 
   def admin?
     role == "admin"

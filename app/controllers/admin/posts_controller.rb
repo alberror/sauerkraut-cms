@@ -2,13 +2,23 @@ class Admin::PostsController < Admin::AdminController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_post_for_status_change, only: %i[ publish unpublish ]
   layout "admin"
-  
+
   def index
     where = {}
-    where[:status] = params[:status] if params[:status].present?
-    order = params[:order].present? ? [params[:order].split("_")[0].to_sym, params[:order].split("_")[1].to_sym] : [:created_at, :asc]
+    orders = {
+      title_asc: "title asc",
+      title_desc: "title desc",
+      status_asc: "status asc",
+      status_desc: "status desc",
+      date_asc: "updated_at asc",
+      date_desc: "updated_at desc",
+      views_asc: "COUNT(post_data.id) asc",
+      views_desc: "COUNT(post_data.id) desc"
+    }
 
-    @posts = Post.where(where).order(order[0] => order[1])
+    where[:status] = params[:status] if params[:status].present?
+    order = params[:order].present? ? orders[params[:order].to_sym] : orders[:date_desc]
+    @posts = Post.left_joins(:post_data).group(:id).where(where).order(order)
     authorize @posts
   end
 
@@ -27,7 +37,7 @@ class Admin::PostsController < Admin::AdminController
     @post = Post.new(post_params)
     @post.user = current_user
     authorize @post
-    
+
     if @post.save
       redirect_to admin_post_path(@post)
     else

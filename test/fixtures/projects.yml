@@ -9,6 +9,8 @@
 #  partner    :string
 #  summary    :string
 #  status     :string           default("unconfirmed")
+#  title      :string
+#  slug       :string
 #
 
 # This model initially had no columns defined. If you add columns to the

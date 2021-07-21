@@ -1,0 +1,14 @@
+.front-page
+  section.title
+    h1 Contactez-nous
+  section.contact-form
+    p Des questions, des suggestions, contactez-nous ! Vous pouvez nous écrire directement via le formulaire ci-dessous.
+    form action="https://formspree.io/f/mnqongvb" method="POST" data-controller="forms" data-target="forms.contactForm"
+      .form-group
+          label Votre email
+          input type="email" name="email"
+      .form-group
+          label Votre message
+          textarea type="text" name="message"
+      .form-group data-target="forms.noticeZone"
+        button type="submit" remote="true" data-action="click->forms#sendContactForm" Envoyer

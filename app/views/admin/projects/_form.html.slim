@@ -1,5 +1,9 @@
-section.form
+section.form data-controller="slug"
   = simple_form_for [:admin, @project] do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+    = f.input :title, label: t("labels.title"), input_html: { data: { action: "keyup->slug#fillSlug" } }
+    = f.input :slug, label: t("labels.slug"), input_html: { "data-slug-target": "slug" }
     = f.input :client, label: t("labels.client")
     = f.input :partner, label: t("labels.partner")
     = f.input :summary, as: :text, label: t("labels.summary")

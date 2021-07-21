@@ -1,9 +1,10 @@
-puts "Destroy Purchases"
-Purchase.destroy_all
-puts "Destroy Orders"
-Order.destroy_all
-puts "Destroy Items"
-Item.destroy_all
+require 'slugify'
+puts "Destroy Comments"
+Comment.destroy_all
+puts "Destroy Articles"
+Post.destroy_all
+puts "Destroy Members"
+Member.destroy_all
 puts "Destroy Users"
 User.destroy_all
 
@@ -22,78 +23,225 @@ end
 @admin.save
 puts "Admin created"
 
-30.times do |i|
-  user = User.new(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    address: Faker::Address.street_address,
-    address_details: [Faker::Address.street_address, ""].sample,
-    zipcode: Faker::Address.zip_code,
-    city: Faker::Address.city,
-    country: Faker::Address.country,
-    phone: Faker::PhoneNumber.phone_number,
-    password: 'mpxUSER1!',
-    role: "user"
-  )
+antoine = Member.new(
+  first_name: "Antoine",
+  last_name: "Duvauchelle",
+  email: "antoine@duvauchelle.co",
+  phone: "+33646635877",
+  status: "active"
+)
 
-  user.save
-  puts "User #{i + 1} created"
-  puts '------------------'
-end
+antoine.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Antoine Duvauchelle.jpeg")].first), filename: "Antoine Duvauchelle.jpg")
 
-60.times do |i|
-  item = Item.new(
-    name: Faker::Game.unique.title,
-    summary: "Summary Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><ul><li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.",
-    body: "<p>Specs Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><ul><li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li><li>Praesent dapibus, <a href=\"https://www.google.fr\">neque id cursus faucibus</a>, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li><li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li><li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li></ul>",
-    status: Item::STATUSES.sample,
-    stock: (1..100).to_a.sample
-  )
+antoine.save!
 
-  item.thumbnail.attach(io: File.open(get_image("items").sample), filename: 'file.jpg')
+alexandre = Member.new(
+  first_name: "Alexandre",
+  last_name: "Valeanu",
+  status: "active"
+)
 
-  item.save
-  puts "Item #{i + 1} created"
-  puts '------------------'
-end
+alexandre.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Alexandre Valeanu.jpeg")].first), filename: "Alexandre Valeanu.jpg")
 
-50.times do |i|
-  order = Order.new(
-    user: User.all.sample,
-    status: Order::STATUSES.sample,
-  )
+alexandre.save!
 
-  order.save
-  puts "Order #{i + 1} created"
-  puts '------------------'
-end
+alyse = Member.new(
+  first_name: "Alyse",
+  last_name: "Zajackowski",
+  status: "active"
+)
 
-110.times do |i|
-  item = Item.where(status: "published").sample
-  purchase = Purchase.new(
-    item: item,
-    stock: (1..item.stock).to_a.sample,
-    order: Order.all.sample
-  )
+alyse.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Alyse Zajackowski.jpeg")].first), filename: "Alyse Zajackowski.jpg")
 
-  purchase.save
-  puts "Purchase #{i + 1} created"
-  puts '------------------'
-end
+alyse.save!
 
-30.times do |i|
-  post = Post.new(
-    user: User.where(status: "admin").sample,
-    title: Faker::Game.title,
-    summary: "Summary Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-    body: "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><ul><li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li><li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li><li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li><li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li></ul>",
-    status: Post::STATUSES.sample
-  )
+aurelie = Member.new(
+  first_name: "Aurélie",
+  last_name: "Galaup",
+  status: "active"
+)
 
-  post.thumbnail.attach(io: File.open(get_image("posts").sample), filename: 'file.jpg')
+aurelie.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Aurélie Galaup.jpeg")].first), filename: "Aurélie Galaup.jpg")
 
-  post.save
-  puts "Post #{i + 1} created"
-  puts '------------------'
-end
+aurelie.save!
+
+camille = Member.new(
+  first_name: "Camille",
+  last_name: "Vassilopoulos",
+  status: "active"
+)
+
+camille.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Camille Vassilopoulos.jpeg")].first), filename: "Camille Vassilopoulos.jpg")
+
+camille.save!
+
+catarina = Member.new(
+  first_name: "Catarina",
+  last_name: "Lopez",
+  status: "active"
+)
+
+catarina.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Catarina Lopez.jpeg")].first), filename: "Catarina Lopez.jpg")
+
+catarina.save!
+
+gaelle = Member.new(
+  first_name: "Gaëlle",
+  last_name: "Bohé",
+  status: "inactive"
+)
+
+gaelle.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Gaëlle Bohé.jpeg")].first), filename: "Gaëlle Bohé.jpg")
+
+gaelle.save!
+
+laure = Member.new(
+  first_name: "Laure",
+  last_name: "Bathelier",
+  status: "active"
+)
+
+laure.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Laure Bathelier.jpeg")].first), filename: "Laure Bathelier.jpg")
+
+laure.save!
+
+marie = Member.new(
+  first_name: "Marie",
+  last_name: "Thumerelle",
+  status: "active"
+)
+
+marie.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Marie Thumerelle.jpeg")].first), filename: "Marie Thumerelle.jpg")
+
+marie.save!
+
+nathalie = Member.new(
+  first_name: "Nathalie",
+  last_name: "Grand",
+  status: "active"
+)
+
+nathalie.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Nathalie Grand.jpeg")].first), filename: "Nathalie Grand.jpg")
+
+nathalie.save!
+
+severine = Member.new(
+  first_name: "Séverine",
+  last_name: "Bellina",
+  status: "active"
+)
+
+severine.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Séverine Bellina.jpeg")].first), filename: "Séverine Bellina.jpg")
+
+severine.save!
+
+sophie = Member.new(
+  first_name: "Sophie",
+  last_name: "Anfosso-Torlotin",
+  status: "active"
+)
+
+sophie.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Sophie Anfosso-Torlotin.jpeg")].first), filename: "Sophie Anfosso-Torlotin.jpg")
+
+sophie.save!
+
+stephanie = Member.new(
+  first_name: "Stéphanie",
+  last_name: "Grujic",
+  status: "active"
+)
+
+stephanie.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Stéphanie Grujic.jpeg")].first), filename: "Stéphanie Grujic.jpg")
+
+stephanie.save!
+
+victor = Member.new(
+  first_name: "Victor",
+  last_name: "Holl",
+  status: "inactive"
+)
+
+victor.picture.attach(io: File.open(Dir[File.join(File.dirname(__FILE__), "../app/assets/images/members/Victor Holl.jpeg")].first), filename: "Victor Holl.jpg")
+
+victor.save!
+
+# 30.times do |i|
+#   user = User.new(
+#     first_name: Faker::Name.first, filename: ".jpg"_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     address: Faker::Address.street_address,
+#     address_details: [Faker::Address.street_address, ""].sample,
+#     zipcode: Faker::Address.zip_code,
+#     city: Faker::Address.city,
+#     country: Faker::Address.country,
+#     phone: Faker::PhoneNumber.phone_number,
+#     password: 'mpxUSER1!',
+#     role: "user",
+#     status: ["active", "inactive"].sample
+#   )
+
+#   user.save!
+#   puts "User #{i + 1} created"
+#   puts '------------------'
+# end
+
+# 40.times do |i|
+#   member = Member.new(
+#     first_name: Faker::Name.first, filename: ".jpg"_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     phone: Faker::PhoneNumber.phone_number,
+#     status: ["active", "inactive"].sample
+#   )
+
+#   member.picture.attach(io: File.open(get_image("avatars").sample), filename: 'file.jpg')
+
+#   member.save!
+
+#   puts "Member #{i + 1} created"
+#   puts '------------------'
+# end
+
+# 30.times do |i|
+#   title = Faker::Game.title
+#   post = Post.new(
+#     user: User.where(role: "admin").sample,
+#     title: title,
+#     summary: "Summary Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+#     body: "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><ul><li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
+#     status: Post::STATUSES.sample,
+#     slug: title.slugify,
+#     created_at: ((Date.today - 200)..Date.today).to_a.sample
+#   )
+
+#   post.thumbnail.attach(io: File.open(get_image("posts").sample), filename: 'file.jpg')
+
+#   post.save!
+
+#   (1..1000).to_a.sample.times do
+#     PostDatum.create(post: post, datum_type: "view", created_at: (post.created_at.to_date..Date.today).to_a.sample)
+#   end
+#   puts "Post #{i + 1} created"
+#   puts '------------------'
+# end
+
+# 160.times do |i|
+#   post = Post.where(status: "published").sample
+#   comment = Comment.new(
+#     post: post,
+#     author: Faker::Name.first, filename: ".jpg"_name,
+#     email: Faker::Internet.email,
+#     status: Comment::STATUSES.sample,
+#     body: Faker::Movies::HarryPotter.quote,
+#     created_at: ((post.created_at.to_date)..Date.today).to_a.sample
+#   )
+
+#   comment.save!
+
+#   (1..1000).to_a.sample.times do
+#     CommentDatum.create(comment: comment, datum_type: ["upvote", "downvote"].sample, created_at: (comment.created_at.to_date..Date.today).to_a.sample)
+#   end
+#   puts "Comment #{i + 1} on post #{post.title} created"
+#   puts '------------------'
+# end

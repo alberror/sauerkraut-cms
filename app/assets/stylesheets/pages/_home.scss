@@ -1,0 +1,23 @@
+section.intro {
+  p {
+    margin: 1rem 0;
+  }
+
+  quote {
+    border-left: 6px solid $salmon;
+    color: $salmon;
+    padding-left: 1rem;
+  }
+
+  a {
+    font-weight: 700;
+
+    &:hover {
+      color: $salmon;
+    }
+  }
+}
+
+section.goals {
+  margin-top: 3rem;
+}

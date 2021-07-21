@@ -1,6 +1,6 @@
 section.resource-show
-  = @project.client
-  = @project.partner
-  = image_tag(@project.thumbnail)
-  = t("statuses.#{@project.status}")
-  = @project.summary 
+  .title = @project.title
+  .client = @project.client
+  .builder = "#{t("default.company_name")} X #{@project.partner}"
+  .thumbnail = image_tag(@project.thumbnail)
+  .summary = @project.summary

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_103536) do
+ActiveRecord::Schema.define(version: 2021_07_08_200229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,23 +62,41 @@ ActiveRecord::Schema.define(version: 2021_04_01_103536) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.integer "stock"
-    t.string "summary"
+  create_table "comment_data", force: :cascade do |t|
+    t.string "datum_type"
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_data_on_comment_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "author"
+    t.string "status", default: "unconfirmed"
+    t.string "email"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "unconfirmed"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "members", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "pending"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "post_data", force: :cascade do |t|
+    t.string "datum_type"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_data_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -99,16 +117,8 @@ ActiveRecord::Schema.define(version: 2021_04_01_103536) do
     t.string "partner"
     t.string "summary"
     t.string "status", default: "unconfirmed"
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.integer "stock"
-    t.bigint "item_id", null: false
-    t.bigint "order_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_purchases_on_item_id"
-    t.index ["order_id"], name: "index_purchases_on_order_id"
+    t.string "title"
+    t.string "slug"
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,7 +145,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_103536) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "orders", "users"
-  add_foreign_key "purchases", "items"
-  add_foreign_key "purchases", "orders"
+  add_foreign_key "comment_data", "comments"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "post_data", "posts"
 end

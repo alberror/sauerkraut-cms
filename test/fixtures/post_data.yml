@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: post_data
+#
+#  id         :bigint           not null, primary key
+#  datum_type :string
+#  post_id    :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  views: 1
+  post: one
+
+two:
+  views: 1
+  post: two

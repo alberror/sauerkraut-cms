@@ -1,0 +1,94 @@
+.members-grid {
+  border-radius: .2rem;
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+
+  .member-card {
+    position: relative;
+
+    @media (max-width: $break-md) {
+      width: 100%;
+    }
+    @media (min-width: $break-md) {
+      height: 242px;
+      width: 200px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .member-name {
+      bottom: 1rem;
+      font-weight: $bold;
+      position: absolute;
+      text-align: center;
+      text-decoration: underline;
+      width: 100%;
+
+      @media (max-width: $break-md) {
+        font-size: .8rem;
+      }
+    }
+
+    &.antoine {
+      grid-area: antoine;
+    }
+    &.alexandre {
+      grid-area: alexandre;
+    }
+    &.catarina {
+      grid-area: catarina;
+    }
+    &.severine {
+      grid-area: severine;
+    }
+    &.laure {
+      grid-area: laure;
+    }
+    &.camille {
+      grid-area: camille;
+    }
+    &.nathalie {
+      grid-area: nathalie;
+    }
+    &.galaup {
+      grid-area: aurelie;
+    }
+    &.alyse {
+      grid-area: alyse;
+    }
+    &.stephanie {
+      grid-area: stephanie;
+    }
+    &.sophie {
+      grid-area: sophie;
+    }
+    &.marie {
+      grid-area: marie;
+    }
+  }
+
+  @media (max-width: $break-md) {
+    background-color: $salmon;
+    grid-template-areas:
+    "antoine alexandre"
+    "catarina severine"
+    "laure camille"
+    "nathalie aurelie"
+    "alyse stephanie"
+    "sophie marie";
+  }
+
+  @media (min-width: $break-md) {
+    background: url(image_path("logos/logo-inv.jpeg")), $salmon;
+    background-repeat: no-repeat;
+    grid-template-areas:
+      ". . . antoine"
+      ". alexandre catarina severine"
+      "laure camille nathalie aurelie"
+      "alyse stephanie sophie ."
+      "marie . . .";
+  }
+}

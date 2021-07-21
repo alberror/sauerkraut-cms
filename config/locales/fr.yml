@@ -9,8 +9,10 @@ fr:
     send: Expédiée
     show: Voir
   admin_sidebar:
+    comments: Commentaires
     dashboard: Dashboard
     items: Catalogue
+    members: Parents
     posts: Articles
     projects: Projets
     orders: Commandes
@@ -19,8 +21,8 @@ fr:
     sign_out: Quitter
   default:
     building: site en construction.
-    company_initials: HM
-    company_name: Hello Mother
+    company_initials: CB
+    company_name: Collectif Béranger
     scroll_anyway: (vous pouvez quand même scroller pour voir nos derniers projets)
   errors:
     unauthorized_location: Vous n'avez pas les autorisations requises pour cette destination
@@ -34,11 +36,23 @@ fr:
     summary: Résumé
     thumbnail: Vignette
     title: Titre
+  metadata:
+    admin_title: Collectif Béranger | BO
+    front_title: Collectif Béranger | Parents d'élèves
+  nav:
+    blog: Actualités
+    contact: Contact
+    home: Accueil
+    members: Les parents
   page_subtitles:
     items:
       one: "%{count} objet trouvé"
       other: "%{count} objets trouvés"
       zero: "%{count} objet trouvé"
+    members:
+      one: "%{count} parent trouvé"
+      other: "%{count} parents trouvés"
+      zero: "%{count} parent trouvé"
     orders:
       one: "%{count} commande trouvée"
       other: "%{count} commandes trouvées"
@@ -58,6 +72,7 @@ fr:
   page_titles:
     edit: Éditer
     items_index: Catalogue
+    members_index: Parents
     new: Créer
     one_item: un objet
     one_post: un article
@@ -66,13 +81,13 @@ fr:
     posts_index: Articles
     projects_index: Projets
     users_index: Utilisateurs
+    welcome: Bienvenue
   placeholders:
     search: Chercher
-    resource_names:
+  resource_names:
     item: objet
     post: article
     project: projet
-  resource_names:
     order: commande
   resource_titles:
     actions: Actions
@@ -82,6 +97,7 @@ fr:
     role: Rôle
     status: Statut
     title: Titre
+    updated_at: Dernière modif.
     user_name: Acheteur
     views: Vues
   roles:

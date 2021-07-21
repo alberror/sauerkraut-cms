@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 html
   head
-    title Sauerkraut CMS
+    title = t("metadata.front_title")
     meta name="viewport" content="width=device-width,initial-scale=1"
     = csrf_meta_tags
     = csp_meta_tag
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css2?family=Dosis:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet"
     script src="https://kit.fontawesome.com/aea57060e1.js" crossorigin="anonymous"
   body
     main.default-main
+      = render "shared/header"
       = yield

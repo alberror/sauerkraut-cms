@@ -1,0 +1,6 @@
+routes:
+  comments: "commentaires"
+  members: "parents"
+  posts: "blog"
+  projects: "projets"
+  users: "utilisateurs"

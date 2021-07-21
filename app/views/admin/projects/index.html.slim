@@ -25,9 +25,16 @@
   section.resource
     table.resource-table
       thead
-        tr 
+        tr
           th
             i.fas.fa-image
+          th
+            span = t("resources_titles.title")
+            span.sort
+              = link_to admin_projects_path(search: params[:search], status: params[:status], order: "title_asc"), class: "btn #{"selected-btn" if params[:order] == 'title_asc'}" do
+                i.fas.fa-sort-up
+              = link_to admin_projects_path(search: params[:search], status: params[:status], order: "title_desc"), class: "btn #{"selected-btn" if params[:order] == 'title_desc'}" do
+                i.fas.fa-sort-down
           th
             span = t("resource_titles.client")
             span.sort
@@ -42,7 +49,6 @@
                 i.fas.fa-sort-up
               = link_to admin_projects_path(search: params[:search], status: params[:status], order: "status_desc"), class: "btn #{"selected-btn" if params[:order] == 'status_desc'}" do
                 i.fas.fa-sort-down
-          th = t("resource_titles.views") 
           th = t("resource_titles.actions")
       tbody
         = render "projects"

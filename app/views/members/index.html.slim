@@ -1,0 +1,10 @@
+.front-page
+  section.title
+    h1 Les parents
+  section.members
+    .members-grid
+      - @members.each do |member|
+        .member-card class="#{member.first_name.downcase.gsub("é", "e")} #{member.last_name.downcase}"
+          = image_tag(member.picture)
+          .member-name
+            = member.full_name

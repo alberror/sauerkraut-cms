@@ -1,0 +1,64 @@
+.contact-form {
+  p {
+    margin-top: 3rem;
+  }
+
+  form {
+    margin: 3rem auto 0 auto;
+
+    @media (min-width: $break-md) {
+      width: 50%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 1.2rem;
+        font-weight: 200;
+      }
+
+      input[name="email"] {
+        height: 2rem;
+      }
+
+      textarea[name="message"] {
+        height: 6rem;
+      }
+
+      button {
+        background-color: $salmon;
+        border: none;
+        border-radius: .2rem;
+        color: $white;
+        cursor: pointer;
+        font-size: 1.6rem;
+        margin: 0 auto;
+        padding: .5rem 1rem;
+      }
+
+      .flash {
+        border-radius: .4rem;
+        color: $white;
+        padding: 1rem;
+
+        &.error {
+          background-color: $red;
+        }
+
+        &.success {
+          background-color: $green;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 2rem;
+      }
+
+      &>:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@
 #  first_name             :string
 #  last_name              :string
 #  phone                  :string
-#  status                 :string
+#  status                 :string           default("active")
 #  address                :string
 #  address_details        :string
 #  zipcode                :string

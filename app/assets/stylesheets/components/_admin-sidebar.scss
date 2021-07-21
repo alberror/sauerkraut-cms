@@ -1,14 +1,11 @@
 @import "../variables";
 
 .sidebar {
-  align-items: center;
   background-color: $gradient2;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  padding: $xl2 $xl;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 
   .trigger {
     align-items: center;
@@ -25,10 +22,21 @@
     width: $xl;
   }
 
+  .sidebar-menus {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 0 $xl;
+
+  }
+
   ul {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
+    padding: $xl2 0;
 
     li {
       &:not(:first-child) {
@@ -44,7 +52,12 @@
         color: inherit;
         display: flex;
       }
-      
+
+      img {
+        height: 2rem;
+        width: 2rem;
+      }
+
       i {
         font-size: $lg;
       }

@@ -9,12 +9,17 @@
 #  partner    :string
 #  summary    :string
 #  status     :string           default("unconfirmed")
+#  title      :string
+#  slug       :string
 #
 class Project < ApplicationRecord
   STATUSES = ["unconfirmed", "published", "unpublished"]
 
   has_one_attached :thumbnail
+  has_many_attached :screenshots
 
-  validates :client, :slug, :summary, presence: true
+  validates :title, :client, :slug, :summary, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
+
+  scope :published, -> { where(status: "published") }
 end

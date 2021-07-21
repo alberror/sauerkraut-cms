@@ -9,6 +9,8 @@
 #  partner    :string
 #  summary    :string
 #  status     :string           default("unconfirmed")
+#  title      :string
+#  slug       :string
 #
 require "test_helper"
 

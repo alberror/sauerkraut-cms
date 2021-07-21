@@ -1,0 +1,73 @@
+header {
+  background-color: $white;
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+
+  .logo {
+    position: relative;
+
+    .header-logo-img {
+      animation: spin 10s linear infinite;
+
+      pointer-events: none;
+      position: absolute;
+      top: 0rem;
+      z-index: 2;
+
+      @media (max-width: $break-md) {
+        height: 2rem;
+      }
+
+      @media (min-width: $break-md) {
+        height: 4rem;
+      }
+    }
+
+    .header-logo-txt {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+
+      @media (max-width: $break-md) {
+        height: 60px;
+      }
+
+      @media (min-width: $break-md) {
+        height: 100px;
+      }
+    }
+  }
+
+  nav {
+    align-self: center;
+
+    ul {
+      display: flex;
+
+      &>li:not(:first-child) {
+        @media (min-width: $break-md) {
+          margin-left: 1rem;
+        }
+      }
+
+      li {
+        a {
+          &:hover {
+            color: rgba(0, 0, 0, 0.3);
+            text-decoration: underline;
+          }
+        }
+
+        @media (max-width: $break-md) {
+          text-align: right;
+        }
+      }
+
+      @media (max-width: $break-md) {
+        flex-direction: column;
+      }
+    }
+  }
+}

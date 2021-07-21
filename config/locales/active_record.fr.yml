@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            slug:
+              blank: "Le slug ne peut pas être vide"

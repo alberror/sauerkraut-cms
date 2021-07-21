@@ -1,0 +1,31 @@
+- @comments.each do |comment|
+  tr
+    td = comment.post.title
+    td = comment.author
+    td = t("statuses.#{comment.status}")
+    td = comment.comment_data
+    td = l(comment.updated_at, format: "%d %B %Y")
+    td
+      .resource-actions
+        .action-container class="status-#{comment.status}" data-controller="toggle" data-toggle-class="hidden"
+          - if comment.status == "published"
+            = link_to admin_comment_unpublish_path(comment) do
+              i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.unpublish")
+          - else
+            = link_to admin_comment_publish_path(comment) do
+              i.fas.fa-toggle-off data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.publish")
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to admin_comment_path(comment) do
+            i.main-action.far.fa-eye data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.show")
+        .action-container.main-action data-controller="toggle" data-toggle-class="hidden"
+          = link_to edit_admin_comment_path(comment) do
+            i.main-action.fas.fa-edit data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+            .tooltip.hidden data-toggle-target="content" = t("actions.edit")
+        - if comment.status == "unpublished"
+          .action-container.delete-action data-controller="toggle" data-toggle-class="hidden"
+            = link_to admin_comment_path(comment), method: :delete, data: {confirm: "Vous allez supprimer le commentaire de #{comment.author}. Êtes-vous sûr(e) ?"} do
+              i.main-action.delete.fas.fa-skull data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
+              .tooltip.hidden data-toggle-target="content" = t("actions.delete")

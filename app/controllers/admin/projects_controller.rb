@@ -26,7 +26,7 @@ class Admin::ProjectsController < Admin::AdminController
   def create
     @project = Project.new(project_params)
     authorize @project
-    
+
     if @project.save
       redirect_to admin_project_path(@project)
     else
@@ -77,6 +77,6 @@ class Admin::ProjectsController < Admin::AdminController
     end
 
     def project_params
-      params.require(:project).permit(:title, :client, :partner, :summary, :thumbnail)
+      params.require(:project).permit(:title, :slug, :client, :partner, :summary, :thumbnail)
     end
 end

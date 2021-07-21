@@ -1,7 +1,14 @@
 section.resource-show
-  = @post.title
-  = @post.user.full_name
-  = image_tag(@post.thumbnail)
-  = t("statuses.#{@post.status}")
-  = @post.summary 
-  = @post.body
+  h1.title = @post.title
+  .author = @post.user.full_name
+  .thumbnail = image_tag(@post.thumbnail)
+  .summary = @post.summary
+  .content = @post.body
+
+/ section.resource-show.comments
+/   h2 = "#{@post.comments.where(status: "published").count} commentaires"
+/   ul
+/     - @post.comments.where(status: "published").each do |comment|
+/       li
+/         div = comment.author
+/         div = comment.body

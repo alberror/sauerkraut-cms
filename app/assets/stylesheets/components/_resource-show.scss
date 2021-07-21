@@ -1,0 +1,12 @@
+section.resource-show {
+  width: 100%;
+
+  .thumbnail {
+
+    img {
+      height: 30rem;
+      object-fit: cover;
+      width: 40rem;
+    }
+  }
+}

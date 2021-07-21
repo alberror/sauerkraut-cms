@@ -15,6 +15,8 @@
 class Post < ApplicationRecord
   STATUSES = ["unconfirmed", "published", "unpublished"]
   belongs_to :user
+  has_many :post_data, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :thumbnail
   has_rich_text :body
@@ -24,4 +26,6 @@ class Post < ApplicationRecord
 
   validates :title, :slug, :summary, :body, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES }
+
+  scope :published, -> { where(status: "published") }
 end

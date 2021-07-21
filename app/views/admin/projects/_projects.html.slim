@@ -1,16 +1,16 @@
 - @projects.each do |project|
   tr
     td = image_tag(project.thumbnail) if project.thumbnail.present?
+    td = project.title
     td = project.client
     td = t("statuses.#{project.status}")
-    td TODO
     td
       .resource-actions
         .action-container class="status-#{project.status}" data-controller="toggle" data-toggle-class="hidden"
           - if project.status == "published"
             = link_to admin_project_unpublish_path(project) do
               i.fas.fa-toggle-on data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"
-              .tooltip.hidden data-toggle-target="content" = t("actions.unpublish")          
+              .tooltip.hidden data-toggle-target="content" = t("actions.unpublish")
           - else
             = link_to admin_project_publish_path(project) do
               i.fas.fa-toggle-off data-action="mouseenter->toggle#toggle mouseleave->toggle#toggle"

@@ -1,16 +1,60 @@
 .front-page
-  section.header
-    h1 = t("default.company_name")
-    p = t("default.building")
-    p.scroll = t("default.scroll_anyway")
-
-  section.projects
-    h2 Nos derniers projets 
-    ul
-      - @projects.each do |project|
-        li.resource-card
-          .card-content
-            h3 = project.client 
-            - if project.partner.present?
-              p = "#{t("default.company_name")} x #{project.partner}" 
-          = image_tag(project.thumbnail)
+  section.intro
+    p Nous sommes des parents d’enfants scolarisés à l’école élémentaire Béranger, candidats pour vous représenter. Nous défendons deux principes : la communication et le fonctionnement collectif dans l’intérêt quotidien de nos enfants. Nos valeurs sont celles de l’école publique et de la République.
+    p Notre rôle est de relayer vos interrogations et suggestions, de vous informer de l’actualité de l’établissement. Nous intervenons pour vous auprès de l’école, de la mairie, de l’académie pour l’intérêt de nos enfants et siégeons au conseil d’école.
+    quote « Il faut tout un village pour élever un enfant. »
+    p L’école est à l’image d’un village, elle associe différents adultes (directrice, enseignant.e.s, animateur.rice.s, personnels, parents) pour aider les enfants à poursuivre une scolarité réussie et épanouie, à grandir et devenir des citoyens éduqués et éveillés.
+    p
+      span Des questions, des suggestions,
+      span = link_to " contactez-nous", contact_path
+      span .
+  section.goals
+    .goals-grid
+      .goal-card-container
+        .goal-card data-controller="toggle" data-toggle-class="hidden"
+          .goal-title data-action="click->toggle#toggle"
+            h3 Communication
+            i.fas.fa-chevron-down data-target="toggle.content"
+            i.fas.fa-chevron-up.hidden data-target="toggle.content"
+          .goal-body.hidden data-target="toggle.content"
+            p Avec tous les adultes en charge de nos enfants, pour leur sécurité et bien être dans leur vie scolaire et périscolaire :
+            ul
+              li direction et équipe enseignante
+              li cantine et périscolaire
+              li personnel de l’école
+              li l’ensemble des parents
+      .goal-card-container
+        .goal-card data-controller="toggle" data-toggle-class="hidden"
+          .goal-title data-action="click->toggle#toggle"
+            h3 Numérique
+            i.fas.fa-chevron-down data-target="toggle.content"
+            i.fas.fa-chevron-up.hidden data-target="toggle.content"
+          .goal-body.hidden data-target="toggle.content"
+            p C’est un langage et une culture supplémentaire pour nos enfants, ils doivent y avoir accès régulièrement dès l’élémentaire. Un possible reconfinement, et la pandémie qui se poursuit, incitent, plus qu’auparavant à être attentifs au passage au numérique :
+            ul
+              li accès au numérique pour toutes les classes
+              li diffusion de l’outil dans la communication de l’école
+              li discussions pour utiliser au mieux les outils informatiques dans le cas où la présence physique ne peut être assurée
+      .goal-card-container
+        .goal-card data-controller="toggle" data-toggle-class="hidden"
+          .goal-title data-action="click->toggle#toggle"
+            h3 Environnement / Santé
+            i.fas.fa-chevron-down data-target="toggle.content"
+            i.fas.fa-chevron-up.hidden data-target="toggle.content"
+          .goal-body.hidden data-target="toggle.content"
+            p Pour que nos enfants grandissent dans un cadre plus respectueux des enjeux environnementaux :
+            ul
+              li restauration scolaire de qualité et diversifiée
+              li cours oasis, piétonisation des abords de l’école
+              li actions éco-citoyennes
+      .goal-card-container
+        .goal-card data-controller="toggle" data-toggle-class="hidden"
+          .goal-title data-action="click->toggle#toggle"
+            h3 Harcèlement / Égalité fille garçon
+            i.fas.fa-chevron-down data-target="toggle.content"
+            i.fas.fa-chevron-up.hidden data-target="toggle.content"
+          .goal-body.hidden data-target="toggle.content"
+            p La prévention du harcèlement et la déconstruction des stéréotypes de genres se mènent dès l’école élémentaire. Respecter l’autre dans ses choix et valeurs :
+            ul
+              li sensibilisation aux problématiques par le jeu et le dialogue
+              li intervention d’une association habilitée

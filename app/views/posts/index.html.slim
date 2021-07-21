@@ -1,0 +1,7 @@
+.front-page
+  section.title
+    h1 Bienvenue sur le blog
+  section.posts
+    ul
+      - @posts.each do |post|
+        li = link_to post.title, post_path(post)
